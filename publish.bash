@@ -42,6 +42,10 @@ git add "./${binary_name}"
 # Use --allow-empty: if the binary happens to be identical to the previous commit, still
 # push the new rev.
 git commit --allow-empty --message="$commit_message"
+
+# Set a large HTTP POST buffer to accommodate pushing large files.
+git config http.postBuffer 209715200
+
 git push origin master
 
 rm -rf "${local_temp_clone_path}"
